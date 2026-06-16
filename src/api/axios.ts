@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: '/',
+  baseURL: 'https://ass4-be.onrender.com/',
   headers: { 'Content-Type': 'application/json' },
 });
 
@@ -51,7 +51,7 @@ api.interceptors.response.use(
       isRefreshing = true;
 
       try {
-        const { data } = await axios.post('/auth/refresh', { refreshToken });
+        const { data } = await axios.post('https://ass4-be.onrender.com/auth/refresh', { refreshToken });
         const newToken = data.data.accessToken;
         localStorage.setItem('accessToken', newToken);
         processQueue(null, newToken);
